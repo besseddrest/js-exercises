@@ -9,3 +9,4 @@ function invertBinaryTree(node) {
   if (right.value != null) invertBinaryTree(right);
   return node;
 }
+
