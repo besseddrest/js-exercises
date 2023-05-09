@@ -5,23 +5,23 @@
 
 // backtracking example
 // start at easiest permutation (aka 1) and recursively return it to the remaining numbers
+// note: Array.concat() does not modify original!!!!
 var permute = function(nums) {
   const result = [];
 
   // base case
-  if (nums.length == 1) return [Array.from(nums)];
+  if (nums.length == 1) return [nums.slice()];
 
   for (let i = 0; i < nums.length; i++) {
-    const num = nums.pop(0);
+    const num = nums.shift();
 
     // recursion
     const perms = permute(nums);
-
     for (let perm of perms) {
       perm.push(num);
     }
 
-    result.concat(perms);
+    result.push(...perms);
     nums.push(num);
   }
 
